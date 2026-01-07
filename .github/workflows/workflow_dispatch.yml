@@ -94,30 +94,8 @@ jobs:
         with:
           channel: 'stable'
 
-      - name: Test git dependencies access
+      # 暂时跳过依赖安装,先验证 Flutter 是否能正常安装
+      - name: Verify Flutter installation
         run: |
-          echo "Testing access to git dependencies..."
-          git ls-remote https://github.com/TerminalStudio/xterm.git
-          git ls-remote https://github.com/nightmare-space/app_manager.git
-          git ls-remote https://github.com/nightmare-space/global_repository.git
-          git ls-remote https://github.com/nightmare-space/multicast.git
-          git ls-remote https://github.com/nightmare-space/file_manager_view.git
-          git ls-remote https://github.com/nightmare-space/adbutil.git
-          git ls-remote https://github.com/nightmare-space/settings.git
-          git ls-remote https://github.com/nightmare-space/device_info.git
-          git ls-remote https://github.com/nightmare-space/empty_package.git
-
-      - name: Get dependencies
-        continue-on-error: true
-        run: |
-          echo "Running flutter pub get..."
-          flutter pub get --verbose
-
-      - name: Show pub log
-        if: failure()
-        shell: pwsh
-        run: |
-          echo "=== PUB LOG FILE ==="
-          if (Test-Path "$env:LOCALAPPDATA\Pub\Cache\log\pub_log.txt") {
-            Get-Content "$env:LOCALAPPDATA\Pub\Cache\log\pub_log.txt" | Select-Object -Last 100
-          }
+          flutter --version
+          flutter doctor
