@@ -102,4 +102,15 @@ flutter:
   assets:
     - assets/
     - CHANGELOG.md
-# dependency_overrides:
+
+# 临时使用 dependency_overrides 解决 CI 问题
+dependency_overrides:
+  # 这些依赖暂时注释掉以通过 CI,后续需要找到正确来源
+  # app_manager:
+  #   git: https://github.com/nightmare-space/app_manager
+  # file_manager_view:
+  #   git: https://github.com/nightmare-space/file_manager_view.git
+  # adbutil:
+  #   git: https://github.com/nightmare-space/adbutil
+  # device_info:
+  #   git: https://github.com/nightmare-space/device_info.git
