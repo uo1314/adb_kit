@@ -26,7 +26,12 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 def keystorePropertiesFile = rootProject.file('key.properties')
 def keystoreProperties = new Properties()
-keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+// 检查 key.properties 是否存在,如果不存在则跳过签名
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
 android {
     compileSdkVersion 34
 
@@ -44,21 +49,30 @@ android {
     }
 
     signingConfigs {
-        release {
-            keyAlias keystoreProperties['keyAlias']
-            keyPassword keystoreProperties['keyPassword']
-            storeFile file(keystoreProperties['storeFile'])
-            storePassword keystoreProperties['storePassword']
+        // 只在 keystore 文件存在时才配置签名
+        if (keystorePropertiesFile.exists()) {
+            release {
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+                storeFile file(keystoreProperties['storeFile'])
+                storePassword keystoreProperties['storePassword']
+            }
         }
     }
     buildTypes {
         release {
-            signingConfig signingConfigs.release
+            // 如果存在签名配置才签名,否则不签名
+            if (keystorePropertiesFile.exists()) {
+                signingConfig signingConfigs.release
+            }
             shrinkResources true
             minifyEnabled true
         }
         debug {
-            signingConfig signingConfigs.release
+            // debug 版本可以不签名
+            if (keystorePropertiesFile.exists()) {
+                signingConfig signingConfigs.release
+            }
             shrinkResources false
             minifyEnabled false
         }

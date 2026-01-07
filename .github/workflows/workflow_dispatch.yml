@@ -114,3 +114,45 @@ jobs:
             Write-Host "Last 50 lines of pub log:"
             Get-Content "$env:LOCALAPPDATA\Pub\Cache\log\pub_log.txt" -Tail 50
           }
+
+  # 新增: Android APK 构建
+  build-android-apk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout current code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Install and set Flutter version
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Get dependencies
+        run: |
+          flutter pub get --no-example
+
+      - name: Build Debug APK
+        run: flutter build apk --debug
+
+      - name: Upload Debug APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: debug-apk
+          path: build/app/outputs/flutter-apk/*.apk
+
+      - name: Build Release APK (unsigned)
+        run: flutter build apk --release
+
+      - name: Upload Release APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: release-apk
+          path: build/app/outputs/flutter-apk/*.apk
