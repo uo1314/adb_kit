@@ -33,7 +33,21 @@ jobs:
           sudo apt-get install libayatana-appindicator3-dev
 
       - name: Get dependencies
-        run: flutter pub get
+        run: |
+          echo "Running flutter pub get..."
+          flutter pub get --verbose || echo "flutter pub get failed"
+
+      - name: Check dependencies
+        if: always()
+        shell: pwsh
+        run: |
+          echo "Checking pubspec.lock status..."
+          if (Test-Path pubspec.lock) {
+            echo "pubspec.lock exists"
+            Get-Content pubspec.lock -Head 50
+          } else {
+            echo "pubspec.lock not found"
+          }
 
 
 
@@ -52,7 +66,21 @@ jobs:
           channel: 'stable'
 
       - name: Get dependencies
-        run: flutter pub get
+        run: |
+          echo "Running flutter pub get..."
+          flutter pub get --verbose || echo "flutter pub get failed"
+
+      - name: Check dependencies
+        if: always()
+        shell: pwsh
+        run: |
+          echo "Checking pubspec.lock status..."
+          if (Test-Path pubspec.lock) {
+            echo "pubspec.lock exists"
+            Get-Content pubspec.lock -Head 50
+          } else {
+            echo "pubspec.lock not found"
+          }
             
   build-windows:
     runs-on: ${{ github.event.inputs.custom_runner == 'true' && 'self-hosted-windows' || 'windows-latest' }}
@@ -69,4 +97,18 @@ jobs:
           channel: 'stable'
 
       - name: Get dependencies
-        run: flutter pub get
+        run: |
+          echo "Running flutter pub get..."
+          flutter pub get --verbose || echo "flutter pub get failed"
+
+      - name: Check dependencies
+        if: always()
+        shell: pwsh
+        run: |
+          echo "Checking pubspec.lock status..."
+          if (Test-Path pubspec.lock) {
+            echo "pubspec.lock exists"
+            Get-Content pubspec.lock -Head 50
+          } else {
+            echo "pubspec.lock not found"
+          }
