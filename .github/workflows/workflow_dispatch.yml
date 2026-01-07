@@ -94,8 +94,23 @@ jobs:
         with:
           channel: 'stable'
 
-      # 暂时跳过依赖安装,先验证 Flutter 是否能正常安装
       - name: Verify Flutter installation
         run: |
           flutter --version
           flutter doctor
+
+      # 测试基本的 pub 包安装
+      - name: Test basic pub packages
+        run: |
+          flutter pub get --no-example
+
+      # 如果失败,显示详细错误
+      - name: Show error details
+        if: failure()
+        shell: pwsh
+        run: |
+          echo "=== ERROR DETAILS ==="
+          if (Test-Path "$env:LOCALAPPDATA\Pub\Cache\log\pub_log.txt") {
+            Write-Host "Last 50 lines of pub log:"
+            Get-Content "$env:LOCALAPPDATA\Pub\Cache\log\pub_log.txt" -Tail 50
+          }
