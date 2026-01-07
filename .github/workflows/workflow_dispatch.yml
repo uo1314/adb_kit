@@ -39,15 +39,14 @@ jobs:
 
       - name: Check dependencies
         if: always()
-        shell: pwsh
         run: |
           echo "Checking pubspec.lock status..."
-          if (Test-Path pubspec.lock) {
+          if [ -f pubspec.lock ]; then
             echo "pubspec.lock exists"
-            Get-Content pubspec.lock -Head 50
-          } else {
+            cat pubspec.lock | head -n 50
+          else
             echo "pubspec.lock not found"
-          }
+          fi
 
 
 
@@ -72,15 +71,14 @@ jobs:
 
       - name: Check dependencies
         if: always()
-        shell: pwsh
         run: |
           echo "Checking pubspec.lock status..."
-          if (Test-Path pubspec.lock) {
+          if [ -f pubspec.lock ]; then
             echo "pubspec.lock exists"
-            Get-Content pubspec.lock -Head 50
-          } else {
+            cat pubspec.lock | head -n 50
+          else
             echo "pubspec.lock not found"
-          }
+          fi
             
   build-windows:
     runs-on: ${{ github.event.inputs.custom_runner == 'true' && 'self-hosted-windows' || 'windows-latest' }}
