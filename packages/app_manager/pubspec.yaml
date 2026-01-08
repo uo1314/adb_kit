@@ -1,0 +1,15 @@
+name: app_manager
+description: Placeholder for app_manager package
+version: 1.0.0
+publish_to: "none"
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+dependencies:
+  flutter:
+    sdk: flutter
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.nightmare.app_manager
+        pluginClass: AppManagerPlugin

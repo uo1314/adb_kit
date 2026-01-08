@@ -1,0 +1,15 @@
+name: device_info
+description: Placeholder for device_info package
+version: 1.0.0
+publish_to: "none"
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+dependencies:
+  flutter:
+    sdk: flutter
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.nightmare.device_info
+        pluginClass: DeviceInfoPlugin
