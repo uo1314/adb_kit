@@ -14,8 +14,10 @@ dependencies:
   # # desktop window stype
   # flutter_acrylic: ^1.1.0
   # adb plugin can manager app
-  # app_manager:
-  #   git: https://github.com/nightmare-space/app_manager
+  app_manager:
+    git:
+      url: https://github.com/nightmare-space/app_manager
+      ref: main
   # network
   dio: ^5.4.3
   # file drop
@@ -48,8 +50,10 @@ dependencies:
   # multicast on LAN
   multicast:
     git: https://github.com/nightmare-space/multicast
-  # file_manager_view:
-  #   git: https://github.com/nightmare-space/file_manager_view.git
+  file_manager_view:
+    git:
+      url: https://github.com/nightmare-space/file_manager_view
+      ref: main
   # can receive mdns message
   multicast_dns: ^0.3.0
   # generate QR widget
@@ -60,8 +64,10 @@ dependencies:
   # launcher url
   url_launcher: ^6.0.18
   # adb command util
-  # adbutil:
-  #   git: https://github.com/nightmare-space/adbutil
+  adbutil:
+    git:
+      url: https://github.com/nightmare-space/adbutil
+      ref: main
   # file selector,but developed by nightmare
   # adb plugin can launcher app
   # app_launcher:
@@ -70,8 +76,10 @@ dependencies:
   settings:
     git: https://github.com/nightmare-space/settings
   # adb plugin can view android device info and cpu/gpu status
-  # device_info:
-  #   git: https://github.com/nightmare-space/device_info.git
+  device_info:
+    git:
+      url: https://github.com/nightmare-space/device_info
+      ref: main
   # can manage window on desktop
   window_manager: ^0.3.0
   flutter_markdown: ^0.6.10+2
@@ -103,14 +111,4 @@ flutter:
     - assets/
     - CHANGELOG.md
 
-# 临时使用 dependency_overrides 解决 CI 问题
-dependency_overrides:
-  # 这些依赖暂时注释掉以通过 CI,后续需要找到正确来源
-  # app_manager:
-  #   git: https://github.com/nightmare-space/app_manager
-  # file_manager_view:
-  #   git: https://github.com/nightmare-space/file_manager_view.git
-  # adbutil:
-  #   git: https://github.com/nightmare-space/adbutil
-  # device_info:
-  #   git: https://github.com/nightmare-space/device_info.git
+
