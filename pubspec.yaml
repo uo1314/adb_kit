@@ -16,8 +16,8 @@ dependencies:
   # adb plugin can manager app
   app_manager:
     git:
-      url: https://github.com/nightmare-space/app_manager
-      ref: main
+      url: https://github.com/nightmare-space/empty_package
+      path: app_manager
   # network
   dio: ^5.4.3
   # file drop
@@ -52,8 +52,8 @@ dependencies:
     git: https://github.com/nightmare-space/multicast
   file_manager_view:
     git:
-      url: https://github.com/nightmare-space/file_manager_view
-      ref: main
+      url: https://github.com/nightmare-space/empty_package
+      path: file_manager_view
   # can receive mdns message
   multicast_dns: ^0.3.0
   # generate QR widget
@@ -66,8 +66,8 @@ dependencies:
   # adb command util
   adbutil:
     git:
-      url: https://github.com/nightmare-space/adbutil
-      ref: main
+      url: https://github.com/nightmare-space/empty_package
+      path: adbutil
   # file selector,but developed by nightmare
   # adb plugin can launcher app
   # app_launcher:
@@ -78,8 +78,8 @@ dependencies:
   # adb plugin can view android device info and cpu/gpu status
   device_info:
     git:
-      url: https://github.com/nightmare-space/device_info
-      ref: main
+      url: https://github.com/nightmare-space/empty_package
+      path: device_info
   # can manage window on desktop
   window_manager: ^0.3.0
   flutter_markdown: ^0.6.10+2
