@@ -24,6 +24,7 @@ jobs:
         with:
           channel: 'stable'
           flutter-version: '3.24.0'
+          cache: true
 
       - name: Setup other environment
         if: github.event.inputs.custom_runner == 'false'
@@ -65,6 +66,7 @@ jobs:
         with:
           channel: 'stable'
           flutter-version: '3.24.0'
+          cache: true
 
       - name: Get dependencies
         run: |
@@ -96,6 +98,7 @@ jobs:
         with:
           channel: 'stable'
           flutter-version: '3.24.0'
+          cache: true
 
       - name: Verify Flutter installation
         run: |
@@ -132,6 +135,7 @@ jobs:
         with:
           channel: 'stable'
           flutter-version: '3.24.0'
+          cache: true
 
       - name: Setup Java
         uses: actions/setup-java@v3
