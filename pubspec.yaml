@@ -9,7 +9,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   # localizations
-  intl: ^0.20.2
+  intl: ^0.19.0
   animations: ^2.0.2
   # # desktop window stype
   # flutter_acrylic: ^1.1.0
